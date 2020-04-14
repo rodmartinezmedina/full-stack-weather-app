@@ -1,6 +1,5 @@
 var { Pool } = require('pg');
 
-
 // DATABASE_URL=postgres://{user}:{password}@{hostname}:{port}/{database-name} <== postgreSQL adress structure.
 const CONNECTION_STRING = process.env.DATABASE_URL || 'postgresql://rodrigo_postgresql:Nuncamiresatras83!@localhost:5432/weather-db';
 const SSL = process.env.NODE_ENV === 'production'; // <== if we are in production it evaluates to 'true'. Otherwise to 'false'.
