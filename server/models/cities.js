@@ -14,7 +14,7 @@ class Cities {
       if(err.error) 
         return callback(err);
       callback(res);
-    })[]
+    });
   }
  }
 

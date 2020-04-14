@@ -15,9 +15,11 @@ router.get('/', function (req, res) {
 router.post('/', function(req, res) {
   var city = req.body.city;
 
-  Cities.insert(city, function (err, resulsts {
+  Cities.insert(city, function (err, results) {
     if (err)
       return res.json(err);
     return res.json(result);
-  }));
+  });
 })
+
+module.exports = router;
