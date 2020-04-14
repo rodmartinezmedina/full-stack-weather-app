@@ -18,7 +18,7 @@ class Database {
     })      
   }
 
-  query() {
+  query(query, ...args) {
     this._pool.connect((err, client, done) => {
       if (err) throw err;
       const params = args.length === 2 ? args[0] : [];
