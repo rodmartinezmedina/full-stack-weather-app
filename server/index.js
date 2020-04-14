@@ -22,4 +22,5 @@ db.query('SELECT NOW()', (err, res) => {
   console.log(`PostgreSQL connected: ${res[0].now}`)
 });
 
+
 module.exports = app;
