@@ -11,7 +11,8 @@ import {
   InputGroup,
   Input,
   InputGroupAddon,
-  Button
+  Button,
+  FormGroup
 } from 'reactstrap';
 
 import Weather from './Weather';
@@ -30,10 +31,36 @@ class App extends Component {
   }
 
   handleInputChange = (e) => {
-
     this.setState({ newCityName: e.target.value });
-
   };
+
+
+  handleAddCity = () => {
+    fetch(('/api/cities'), {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ city: this.state.newCityName })
+    })
+    .then(res =>res.json())
+    .then(res => {
+      this.getCityList();
+      this.setState({ newCityName: "" });
+    });
+  };
+
+
+  getWeather = (city) => {
+    fetch(`/api/weather/${city}`)
+    .then( res => res.json())
+    .then(weather => {
+      this.setState({ weather });
+    });
+  }
+
+
+  handleChangeCity = (e) => {
+    this.getWeather(e.target.value)
+  }
 
 
   getCityList = () => {
@@ -79,12 +106,21 @@ class App extends Component {
               </InputGroup>
 
             </Jumbotron>
-
             
           </Col>
         </Row>
+
         <Row>
-          <Col></Col>
+          <Col>
+            <h1  className="display-5">Current Weather</h1>
+            <FormGroup>
+              <Input type="select" onChange={this.handleChangeCity}>
+                {this.state.cityList.length === 0 && <option>No cities added yet</option>}
+                {this.state.cityList.length > 0 && <option>Select a city</option>}
+                {this.state.cityList.map( (city,i) => <option key={i}>{city}</option> )}
+              </Input>
+            </FormGroup>
+          </Col>
         </Row>
 
         <Weather />
