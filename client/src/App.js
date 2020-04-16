@@ -65,7 +65,7 @@ class App extends Component {
 
   handleChangeCity = (e) => {
     this.getWeather(e.target.value)     
-   }
+  }
   
 
 
