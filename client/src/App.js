@@ -58,9 +58,17 @@ class App extends Component {
     });
   }
 
+  noCityMsg = () => {
+    console.log('City is either inexistant or misspelled. Please enter a valid city.')
+  }
+
 
   handleChangeCity = (e) => {
-    this.getWeather(e.target.value)
+    if (e === undefined) {
+      this.noCityMsg();      
+    } else {
+        this.getWeather(e.target.value)     
+    }
   }
 
 
