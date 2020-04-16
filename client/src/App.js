@@ -54,6 +54,7 @@ class App extends Component {
     .then( res => res.json())
     .then(weather => {
       this.setState({ weather });
+      console.log(weather);
     });
   }
 
@@ -123,7 +124,7 @@ class App extends Component {
           </Col>
         </Row>
 
-        <Weather />
+        <Weather data={this.state.weather}/>
 
       </Container>
 
