@@ -64,12 +64,9 @@ class App extends Component {
 
 
   handleChangeCity = (e) => {
-    if (e === undefined) {
-      this.noCityMsg();      
-    } else {
-        this.getWeather(e.target.value)     
-    }
-  }
+    this.getWeather(e.target.value)     
+   }
+  
 
 
   getCityList = () => {
